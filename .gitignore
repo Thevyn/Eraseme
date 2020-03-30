@@ -3,3 +3,10 @@ release.properties
 buildNumber.properties
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar
+*.dat
+database/hotelsample/service.properties
+database/hotelsample/seg0/README_DO_NOT_TOUCH_FILES.txt
+database/hotelsample/README_DO_NOT_TOUCH_FILES.txt
+database/hotelsample/log/README_DO_NOT_TOUCH_FILES.txt
+database/hotelsample/log/logmirror.ctrl
+database/hotelsample/log/log.ctrl

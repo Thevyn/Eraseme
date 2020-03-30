@@ -1,0 +1,4 @@
+connect 'jdbc:derby:hotelsample;create=true';
+run 'hotelsample-schema.sql';
+run 'hotelsample-dump.sql';
+run 'hotelsample-index.sql';
