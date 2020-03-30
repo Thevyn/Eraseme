@@ -5,14 +5,22 @@ import esito.Connect;
 import no.esito.anonymizer.ContextFactory;
 import no.esito.anonymizer.IContext;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Method;
 import java.sql.Connection;
+import java.util.Arrays;
 
 @RestController
+@RequestMapping("/api")
 public class EraseController {
 
+    /**
+     *
+     * @param taskName
+     * @param identifier
+     */
     @PostMapping("/eraseMe")
     public void eraseMe(String taskName, String[] identifier) {
         Connection connection = null;
