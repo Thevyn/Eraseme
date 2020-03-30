@@ -41,9 +41,6 @@
               <sources>
                 <source>src/test/java</source>
               </sources>
-              <sources>
-                <source>src-gen/main/java</source>
-              </sources>
             </configuration>
           </execution>
         </executions>
@@ -92,6 +89,11 @@
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
             <version>${derby.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
         </dependency>
     </dependencies>
 

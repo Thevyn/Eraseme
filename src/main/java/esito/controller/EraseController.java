@@ -1,6 +1,7 @@
-package esito;
+package esito.controller;
 
-import forgetme.Erase_CUSTOMER;
+import esito.Connect;
+
 import no.esito.anonymizer.ContextFactory;
 import no.esito.anonymizer.IContext;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,6 @@ public class EraseController {
 
     @PostMapping("/eraseMe")
     public void eraseMe(String taskName, String[] identifier) {
-
-
         Connection connection = null;
         try {
             connection = Connect.createDefaultConnection();
@@ -25,7 +24,6 @@ public class EraseController {
 
             Class<?> eraseClass = Class.forName("forgetme.Erase_" + taskName.toUpperCase());
             Object erase = eraseClass.getDeclaredConstructor().newInstance();
-
             Method method = erase.getClass().getMethod("run", IContext.class);
             method.invoke(erase, context);
 
