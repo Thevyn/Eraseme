@@ -3,9 +3,9 @@
 ## Prerequisites to run the program
 The example uses Java, Maven and Derby database. It is tested with the versions:
 
-java 1.13
+* java 1.13
 
-derby 10.14.2.0
+* derby 10.14.2.0
 
 ### Derby install
 Download [Derby](https://db.apache.org/derby/derby_downloads.html)
