@@ -4,6 +4,7 @@ import esito.Connect;
 
 import esito.model.Customer;
 import esito.repository.CustomerRepository;
+import esito.repository.EraseRepository;
 import no.esito.anonymizer.ContextFactory;
 import no.esito.anonymizer.IContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class EraseController {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Autowired
+    private EraseRepository eraseRepository;
+
     /**
      * POST Method to erase database data
      *
@@ -29,35 +33,17 @@ public class EraseController {
      */
     @RequestMapping("/eraseMe")
     public void eraseMe(String taskName, String[] identifier) {
-        Connection connection = null;
-        try {
-            connection = Connect.createDefaultConnection();
-
-            new ContextFactory();
-            IContext context = ContextFactory.createEraseContext(connection, identifier);
-
-            Class<?> eraseClass = Class.forName("forgetme.Erase_" + taskName.toUpperCase());
-            Object erase = eraseClass.getDeclaredConstructor().newInstance();
-            Method runMethod = erase.getClass().getMethod("run", IContext.class);
-            runMethod.invoke(erase, context);
-
-            connection.close();
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
+       eraseRepository.eraseMe(taskName, identifier);
     }
 
     @RequestMapping("/Erase_CUSTOMER")
-    public void eraseCustomer(String identifier) {
-        customerRepository.eraseCustomer(identifier);
+    public void eraseCustomer(String[] identifier) {
+        eraseRepository.eraseMe(identifier);
     }
 
     @RequestMapping("/getCustomers")
     public List<Customer> getCustomers() {
-
-        List<Customer> list = customerRepository.findAll();
-
-        return list;
+        return customerRepository.findAll();
     }
 
 
