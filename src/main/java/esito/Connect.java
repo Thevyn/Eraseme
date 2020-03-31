@@ -8,7 +8,6 @@ import java.net.InetAddress;
 
 import no.esito.anonymizer.ConfigUtil;
 import no.esito.anonymizer.core.AbstractConnect;
-import org.apache.derby.drda.NetworkServerControl;
 
 public class Connect extends AbstractConnect{
 
@@ -21,7 +20,7 @@ public class Connect extends AbstractConnect{
         return new Connect().makeConnection("",ConfigUtil.getConfig());
     }
 
-    public NetworkServerControl nsc;
+   /* public NetworkServerControl nsc;
 
     @Override
     protected void checkNetworkService(String host, String port) throws Throwable {
@@ -31,5 +30,5 @@ public class Connect extends AbstractConnect{
             nsc.start(null);
             System.out.println("Starting Derby: "+ port);
         }
-    }
+    }*/
 }

@@ -9,17 +9,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.sql.DataSource;
 
 @SpringBootApplication
-public class Application implements CommandLineRunner {
+public class Application {
+
     @Autowired
     DataSource dataSource;
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println("Connection Polling datasource : "+ dataSource);  // check connection pooling
-    }
-
 
 }
