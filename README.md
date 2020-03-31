@@ -1,15 +1,9 @@
 # Eraseme
  
 ## Prerequisites to run the program
-The example uses Java, Maven and Derby database. It is tested with the versions:
+The example uses Java, Maven and h2 database. It is tested with the versions:
 
 * java 1.13
-
-
-### Derby install
-Download [Derby](https://db.apache.org/derby/derby_downloads.html)
-, unzip to a folder of your choice.
-
 
 Download and unzip the project to a java project (`eraseme`) or clone the repository: 
 
