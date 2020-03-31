@@ -1,7 +1,5 @@
 package esito.repository;
 
-import esito.Connect;
-import esito.model.Customer;
 import forgetme.Erase_CUSTOMER;
 import no.esito.anonymizer.ContextFactory;
 import no.esito.anonymizer.IContext;
