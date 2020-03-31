@@ -60,8 +60,5 @@ public class EraseController {
         return list;
     }
 
-    @RequestMapping("/addCustomer")
-    public void addCustomer(String creditCard, int customerNo,String name, String email, String password, String phone) {
-        customerRepository.addCustomer(creditCard, customerNo, name, email, password, phone);
-    }
+
 }
