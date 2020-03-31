@@ -2,6 +2,7 @@ package esito;
 
 import esito.model.Customer;
 import esito.repository.CustomerRepository;
+import esito.repository.EraseRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,15 +16,6 @@ public class CustomerRepoTest {
 
     @Autowired
     private CustomerRepository customerRepository;
-
-    @Test
-    public void eraseCustomer() {
-        customerRepository.eraseCustomer("1000234");
-        Customer customer = customerRepository.findCustomerById("1000234");
-
-        Assert.assertEquals("firstname lastname", customer.getName() );
-        Assert.assertEquals("email@email.com",customer.getEmail());
-    }
 
     @Test
     public void findUserById() {
