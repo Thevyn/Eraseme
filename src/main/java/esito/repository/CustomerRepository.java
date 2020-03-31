@@ -15,14 +15,14 @@ public class CustomerRepository {
 
     public void eraseCustomer(String customerNo) {
         this.jdbcTemplate.update(
-                "Update CUSTOM set name = 'firstname lastname', email = 'email@email.com' where customerNo = ?",
+                "Update CUSTOMER set name = 'firstname lastname', email = 'email@email.com' where customerNo = ?",
                 customerNo);
     }
 
     public List<Customer> findAll() {
 
         List<Customer> result = jdbcTemplate.query(
-                "SELECT creditCard, customerNo, email, name, password, phone FROM custom",
+                "SELECT creditCard, customerNo, email, name, password, phone FROM customer",
                 (rs, rowNum) -> new Customer(rs.getString("creditCard"),
                         rs.getInt("customerNo"), rs.getString("email"),
                         rs.getString("name"), rs.getString("password"), rs.getString("phone"))
@@ -31,9 +31,19 @@ public class CustomerRepository {
     }
 
 
+    public Customer findCustomerById(String customerNo) {
+
+        Customer result = jdbcTemplate.queryForObject(
+                "SELECT * FROM customer where customerNo = ?", new Object[]{customerNo},
+                (rs, rowNum) -> new Customer(rs.getString("creditCard"),
+                        rs.getInt("customerNo"), rs.getString("email"),
+                        rs.getString("name"), rs.getString("password"), rs.getString("phone"))
+        );
+        return result;
+    }
     // Add new customer
     public void addCustomer(String creditCard, int customerNo,String name, String email, String password, String phone) {
-        jdbcTemplate.update("INSERT INTO custom( creditCard, customerNo, email, name, password, phone) VALUES (?,?,?,?,?,?)",
+        jdbcTemplate.update("INSERT INTO customer( creditCard, customerNo, email, name, password, phone) VALUES (?,?,?,?,?,?)",
                 creditCard, customerNo, email, name, password, phone);
 
     }
