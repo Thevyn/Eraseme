@@ -4,7 +4,9 @@ import esito.model.Customer;
 import esito.repository.CustomerRepository;
 import esito.repository.EraseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,9 +32,10 @@ public class EraseController {
        eraseRepository.eraseMe(taskName, identifier);
     }
 
-    @RequestMapping("/Erase_CUSTOMER")
-    public void eraseCustomer(String[] identifier) {
-        eraseRepository.eraseMe(identifier);
+    // URL: ../api/Erase_CUSTOMER?custnum=x
+    @GetMapping("/Erase_CUSTOMER")
+    public void eraseCustomer(@RequestParam String custnum) {
+        eraseRepository.eraseMe("CUSTOMER",new String[] {custnum});
     }
 
     @RequestMapping("/getCustomers")
