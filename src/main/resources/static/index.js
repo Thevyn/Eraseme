@@ -45,7 +45,7 @@ function eraseCustomer(e) {
     e.preventDefault();
 
     var customerNo = $("#customerNo").val();
-    $.post("/api/Erase_CUSTOMER?identifier="+customerNo);
+    $.get("/api/Erase_CUSTOMER?custnum="+customerNo);
 
     $("#customerNo").val("")
     getAllCustomer();

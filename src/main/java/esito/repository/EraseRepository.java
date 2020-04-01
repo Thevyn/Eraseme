@@ -19,31 +19,22 @@ public class EraseRepository {
     DataSource dataSource;
 
     public void eraseMe(String taskName, String[] identifier) {
-        Connection connection = null;
         try {
-            connection = DataSourceUtils.getConnection(dataSource);
-
-            new ContextFactory();
-            IContext context = ContextFactory.createEraseContext(connection, identifier);
+            IContext context = ContextFactory.createEraseContext(DataSourceUtils.getConnection(dataSource), identifier);
 
             Class<?> eraseClass = Class.forName("forgetme.Erase_" + taskName.toUpperCase());
             Object erase = eraseClass.getDeclaredConstructor().newInstance();
             Method runMethod = erase.getClass().getMethod("run", IContext.class);
             runMethod.invoke(erase, context);
 
-            connection.close();
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
     }
 
     public void eraseMe(String[] identifier) {
-        Connection connection = null;
         try {
-            connection = DataSourceUtils.getConnection(dataSource);
-
-            new ContextFactory();
-            IContext context = ContextFactory.createEraseContext(connection, identifier);
+            IContext context = ContextFactory.createEraseContext(DataSourceUtils.getConnection(dataSource), identifier);
 
           new Erase_CUSTOMER().run(context);
 
